@@ -40,7 +40,7 @@
 
 ### Процесс установки
 
-## На всех нодах отключен swap и настроены модули ядра (`overlay`, `br_netfilter`).
+### На всех нодах отключен swap и настроены модули ядра (`overlay`, `br_netfilter`).
 ```
 sudo swapoff -a
 sudo sed -i '/ swap / s/^/#/' /etc/fstab
@@ -59,10 +59,10 @@ net.ipv4.ip_forward                 = 1
 EOF
 sudo sysctl --system
 ```
-## Скриншоты:
+### Скриншоты:
 ![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/01.png)
 
-## Установлен CRI **containerd** (с включенным `SystemdCgroup = true`).
+### Установлен CRI **containerd** (с включенным `SystemdCgroup = true`).
 ```
 sudo apt-get update
 sudo apt-get install -y containerd apt-transport-https ca-certificates curl gpg
@@ -75,10 +75,10 @@ sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/conf
 sudo systemctl restart containerd
 sudo systemctl enable containerd
 ```
-## Скриншоты:
+### Скриншоты:
 ![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/02.png)
 ![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/03.png)
-## Установлены пакеты `kubeadm`, `kubelet`, `kubectl` версии **1.29**.
+### Установлены пакеты `kubeadm`, `kubelet`, `kubectl` версии **1.29**.
 ```
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
@@ -88,17 +88,17 @@ sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
-## Скриншоты:
+### Скриншоты:
 ![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/04.png)
 ![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/05.png)
 ![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/06.png)
 ![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/07.png)
 ![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/08.png)
-## Мастер инициализирован командой:
+### Мастер инициализирован командой:
    ```bash
    sudo kubeadm init --apiserver-advertise-address=IP --pod-network-cidr=10.244.0.0/16
 ```
-## Манифесты:
+### Манифесты:
 [CNI Flannel:](https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml)
 
 
