@@ -59,6 +59,9 @@ net.ipv4.ip_forward                 = 1
 EOF
 sudo sysctl --system
 ```
+## Скриншоты:
+![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/01.png)
+
 ## Установлен CRI **containerd** (с включенным `SystemdCgroup = true`).
 ```
 sudo apt-get update
@@ -72,7 +75,9 @@ sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/conf
 sudo systemctl restart containerd
 sudo systemctl enable containerd
 ```
-
+## Скриншоты:
+![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/02.png)
+![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/03.png)
 ## Установлены пакеты `kubeadm`, `kubelet`, `kubectl` версии **1.29**.
 ```
 sudo mkdir -p /etc/apt/keyrings
@@ -83,14 +88,19 @@ sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
-
+## Скриншоты:
+![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/04.png)
+![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/05.png)
+![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/06.png)
+![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/07.png)
+![kubernetes](https://github.com/valdemar-2502/Installing-Kubernetes-Homeworks/blob/main/screenshots/08.png)
 ## Мастер инициализирован командой:
    ```bash
    sudo kubeadm init --apiserver-advertise-address=IP --pod-network-cidr=10.244.0.0/16
 ```
-
 ## Манифесты:
 [CNI Flannel:](https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml)
+
 
 ## Дополнительные задания (со звёздочкой)
 
